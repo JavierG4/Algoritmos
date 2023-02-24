@@ -16,7 +16,7 @@
 
 using namespace std;
 
-int main() {
+int main() { // Inicio de la función main
   Rational a(1, 2), b(1), c;
 
   cout << "a.value()= " << a.value() << endl;
@@ -36,19 +36,19 @@ int main() {
   Rational x(1, 3), y(2, 3);
   x.write();
   y.write();
-  cout << "x == y? " << (x.is_equal(y) ? "true" : "false") << endl;
-  cout << "x < y? " << (x.is_greater(y) ? "true" : "false") << endl;
-  cout << "x > y? " << (x.is_less(y) ? "true" : "false") << endl;
+  cout << "x == y? " << (x.is_equal(y) ? "true" : "false") << endl; //Muestra en consola si el x es igual a la y
+  cout << "x < y? " << (x.is_greater(y) ? "true" : "false") << endl; // Muestra en consola si la x es más grande que la y
+  cout << "x > y? " << (x.is_less(y) ? "true" : "false") << endl; // Muestra en consola si la x es más pequeña
 
   // FASE III
-  cout << "a + b: ";
+  cout << "a + b: "; // Esto muestra en consola el resultado de sumar a + b 
   a.add(b).write();
-  cout << "b - a: ";
+  cout << "b - a: "; // Esto muestra en consola el resultado de restar a - b
   b.substract(a).write();
-  cout << "a * b: ";
-  a.multiply(b).write();
-  cout << "a / b: ";
-  a.divide(b).write();
+  cout << "a * b: "; // Esto muestra en consola el resultado de multiplicar a * b 
+  a.multiply(b).write(); 
+  cout << "a / b: "; // Esto muestra en consola el resultado de dividir a entre b
+  a.divide(b).write(); 
   
   return 0;
 }

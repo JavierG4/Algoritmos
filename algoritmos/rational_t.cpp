@@ -51,19 +51,19 @@ bool Rational::is_less(Rational& r, const double precision) { // Método que que
   return result;
 }
 //fase 3
-Rational Rational::add(Rational& r) {
+Rational Rational::add(Rational& r) { // Método que devuelve la suma de a + b en forma de clase Rational
   return Rational ((numerador_ * r.get_denominador()) + (denominador_ * r.get_numerador()), denominador_ * r.get_denominador());
 }
 
-Rational Rational::substract(Rational& r) {
+Rational Rational::substract(Rational& r) { // Método que devuelve la resta de b-a en forma de clase Rational
   return Rational ((get_numerador() * denominador_) - (numerador_ * r.get_denominador()), denominador_ * r.get_denominador());
 }
 
-Rational Rational::multiply(Rational& r) {
+Rational Rational::multiply(Rational& r) { // Método que devuelve la multiplicación en forma de clase Rational
   return Rational ((get_numerador() * numerador_ ), denominador_ * r.get_denominador());
 }
 
-Rational Rational::divide(Rational& r) {
+Rational Rational::divide(Rational& r) { // Método que devuelve la suma de a + b en forma de clase Rational
   return Rational ((numerador_ * get_denominador()), denominador_ * get_numerador());
 }
 
@@ -71,7 +71,7 @@ void Rational::write() { // Procedimiento que imprime en pantalla la divison ent
   cout << get_numerador() << "/" << get_denominador() << "=" << value() << endl;
 }
 
-void Rational::read() {
+void Rational::read() { //Procedimiento que imprime en pantalla y recoge el valor de denominador y numerador
   cout << "Numerador? ";
   cin >> numerador_;
   cout << "Denominador? ";

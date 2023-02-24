@@ -39,13 +39,13 @@ class Rational { //La creación de clase Rational
    bool is_less(Rational&, const double precision = EPSILON);
   
   // FASE III
-   Rational add(Rational&);
+   Rational add(Rational&); 
    Rational substract(Rational&);
    Rational multiply(Rational&);
    Rational divide(Rational&);
   
-   void write();
-   void read();
+   void write(); //Procedimiento
+   void read(); //Procedimiento
   
  private:
    int numerador_, denominador_;
