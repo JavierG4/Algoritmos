@@ -1,0 +1,80 @@
+// AUTOR: Javier González Brito
+// FECHA: 17/02/2023
+// EMAIL: alu0101548197@ull.edu.es
+// VERSION: 1.0
+// ASIGNATURA: Algoritmos y Estructuras de Datos
+// PRÁCTICA Nº: 1
+// COMENTARIOS: se indican entre [] las pautas de estilo aplicadas de
+//              "C++ Programming Style Guidelines"
+//              https://geosoft.no/development/cppstyle.html
+
+#include "rational_t.hpp"
+
+Rational::Rational(const int numerador, const int denominador) { //Contructor de la clase Rational
+  assert(denominador != 0);
+  numerador_ = numerador, denominador_ = denominador;
+}
+
+const int Rational::get_numerador() { // Retorna el valor del atributo
+  return numerador_;
+}
+
+const int Rational::get_denominador() { // Retorna el valor del atributo
+  return denominador_;
+}
+
+void Rational::set_numerador(const int numerador) { // Procedimiento que asigna el valor del atributo de la clase a la variable
+  numerador_ = numerador;
+}
+
+void Rational::set_denominador(const int denominador) { // Procedimiento que asigna el valor del atributo de la clase a la variable
+  assert(denominador != 0);
+  denominador_ = denominador;
+}
+
+const double Rational::value() { // Retorna el valor de la división entre el numerador y el denominador
+  return double(get_numerador()) / get_denominador(); //  Retorna el valor de la división entre el numerador y el denominador
+}
+
+bool Rational::is_equal(Rational& r, const double precision) { // Método que que te dice si son iguales
+  bool result = fabs (value() - r.value()) < precision ;
+  return result;
+}
+
+bool Rational::is_greater(Rational& r, const double precision) { // Método que que te dice si x es mayor que y
+  bool result = (value() - r.value()) > precision;
+  return result;
+}
+
+bool Rational::is_less(Rational& r, const double precision) { // Método que que te dice si x es menor que la y
+  bool result = (value() - r.value()) < precision;
+  return result;
+}
+//fase 3
+Rational Rational::add(Rational& r) {
+  return Rational ((numerador_ * r.get_denominador()) + (denominador_ * r.get_numerador()), denominador_ * r.get_denominador());
+}
+
+Rational Rational::substract(Rational& r) {
+  return Rational ((get_numerador() * denominador_) - (numerador_ * r.get_denominador()), denominador_ * r.get_denominador());
+}
+
+Rational Rational::multiply(Rational& r) {
+  return Rational ((get_numerador() * numerador_ ), denominador_ * r.get_denominador());
+}
+
+Rational Rational::divide(Rational& r) {
+  return Rational ((numerador_ * get_denominador()), denominador_ * get_numerador());
+}
+
+void Rational::write() { // Procedimiento que imprime en pantalla la divison entre el num y el denominador y su resultado
+  cout << get_numerador() << "/" << get_denominador() << "=" << value() << endl;
+}
+
+void Rational::read() {
+  cout << "Numerador? ";
+  cin >> numerador_;
+  cout << "Denominador? ";
+  cin >> denominador_;
+  assert(denominador_ != 0);
+}
