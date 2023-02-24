@@ -18,20 +18,20 @@ using namespace std;
 
 int main() { // Inicio de la función main
   Rational a(1, 2), b(1), c; //Inicializacion de los valores a, b y c
-
+  
   cout << "a.value()= " << a.value() << endl; // Inprime el valor de a
   cout << "b.value()= " << b.value() << endl; // Inprime el valor de b
   cout << "c.value()= " << c.value() << endl; // Inprime el valor de c
-
+  
   cout << "a: "; // Inprime el valor de a
   a.write();
   cout << "b: "; // Inprime el valor de b
   b.write();
-
+ 
   c.read(); //LLama al procedimiento read
   cout << "c: ";// Inprime el nuevo valor de c
   c.write();
-
+  
   // FASE II
   Rational x(1, 3), y(2, 3); //Inicializacion de los valores x e y
   x.write(); // Imprime el valor de x
@@ -40,6 +40,7 @@ int main() { // Inicio de la función main
   cout << "x < y? " << (x.is_greater(y) ? "true" : "false") << endl; // Muestra en consola si la x es más pequeña que la y
   cout << "x > y? " << (x.is_less(y) ? "true" : "false") << endl; // Muestra en consola si la x es más grande
   cout << "x == 0 " << (x.equal_cero(y) ? "true" : "false") << endl; //Muestra en consola si la x es igual a 0
+  
   // FASE III
   cout << "a + b: "; // Esto muestra en consola el resultado de sumar a + b 
   a.add(b).write();

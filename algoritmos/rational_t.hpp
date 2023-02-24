@@ -23,7 +23,7 @@ using namespace std;
 class Rational { //La creación de clase Rational
  
  public:
-   Rational(const int = 0, const int = 1); //estruc
+   Rational(const int = 0, const int = 1); //Constructor por defecto
    // getters
    const int get_numerador();
    const int get_denominador();
