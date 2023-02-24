@@ -41,13 +41,13 @@ bool Rational::is_equal(Rational& r, const double precision) { // Método que qu
   return result;
 }
 
-bool Rational::is_greater(Rational& r, const double precision) { // Método que que te dice si x es mayor que y
-  bool result = (value() - r.value()) > precision;
+bool Rational::is_greater(Rational& r, const double precision) { // Método que que te dice si y es mayor que x
+  bool result = (r.value() - value()) > precision;
   return result;
 }
 
-bool Rational::is_less(Rational& r, const double precision) { // Método que que te dice si x es menor que la y
-  bool result = (value() - r.value()) < precision;
+bool Rational::is_less(Rational& r, const double precision) { // Método que que te dice si y es menor que la x
+  bool result = (value() - r.value()) > precision;
   return result;
 }
 //fase 3
@@ -56,7 +56,7 @@ Rational Rational::add(Rational& r) { // Método que devuelve la suma de a + b e
 }
 
 Rational Rational::substract(Rational& r) { // Método que devuelve la resta de b-a en forma de clase Rational
-  return Rational ((get_numerador() * denominador_) - (numerador_ * r.get_denominador()), denominador_ * r.get_denominador());
+  return Rational ((numerador_ * r.get_denominador()) - (get_numerador() * denominador_) , denominador_ * r.get_denominador());
 }
 
 Rational Rational::multiply(Rational& r) { // Método que devuelve la multiplicación en forma de clase Rational
@@ -64,7 +64,7 @@ Rational Rational::multiply(Rational& r) { // Método que devuelve la multiplica
 }
 
 Rational Rational::divide(Rational& r) { // Método que devuelve la suma de a + b en forma de clase Rational
-  return Rational ((numerador_ * get_denominador()), denominador_ * get_numerador());
+  return Rational (denominador_ * get_numerador(),numerador_ * get_denominador());
 }
 
 void Rational::write() { // Procedimiento que imprime en pantalla la divison entre el num y el denominador y su resultado

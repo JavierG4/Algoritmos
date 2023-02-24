@@ -37,8 +37,8 @@ int main() { // Inicio de la función main
   x.write();
   y.write();
   cout << "x == y? " << (x.is_equal(y) ? "true" : "false") << endl; //Muestra en consola si el x es igual a la y
-  cout << "x < y? " << (x.is_greater(y) ? "true" : "false") << endl; // Muestra en consola si la x es más grande que la y
-  cout << "x > y? " << (x.is_less(y) ? "true" : "false") << endl; // Muestra en consola si la x es más pequeña
+  cout << "x < y? " << (x.is_greater(y) ? "true" : "false") << endl; // Muestra en consola si la x es más pequeña que la y
+  cout << "x > y? " << (x.is_less(y) ? "true" : "false") << endl; // Muestra en consola si la x es más grande
 
   // FASE III
   cout << "a + b: "; // Esto muestra en consola el resultado de sumar a + b 
