@@ -32,8 +32,8 @@ void Rational::set_denominador(const int denominador) { // Procedimiento que asi
   denominador_ = denominador;
 }
 
-const double Rational::value() { // Retorna el valor de la división entre el numerador y el denominador
-  return double(get_numerador()) / get_denominador(); //  Retorna el valor de la división entre el numerador y el denominador
+const double Rational::value() { // Método que retorna el valor de la división entre el numerador y el denominador
+  return double(get_numerador()) / get_denominador(); 
 }
 
 bool Rational::is_equal(Rational& r, const double precision) { // Método que que te dice si son iguales
