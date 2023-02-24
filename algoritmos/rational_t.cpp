@@ -50,6 +50,12 @@ bool Rational::is_less(Rational& r, const double precision) { // Método que que
   bool result = (value() - r.value()) > precision;
   return result;
 }
+
+bool Rational::equal_cero(Rational& r, const double precision) {// Método booleana que indica si la primera fracción es igual a cero
+  bool result = fabs(value()) < precision;
+  return result;
+}
+
 //fase 3
 Rational Rational::add(Rational& r) { // Método que devuelve la suma de a + b en forma de clase Rational
   return Rational ((numerador_ * r.get_denominador()) + (denominador_ * r.get_numerador()), denominador_ * r.get_denominador());

@@ -37,6 +37,7 @@ class Rational { //La creación de clase Rational
    bool is_equal(Rational&, const double precision = EPSILON);
    bool is_greater(Rational&, const double precision = EPSILON);
    bool is_less(Rational&, const double precision = EPSILON);
+   bool equal_cero(Rational&, const double precision = EPSILON);
   
   // FASE III
    Rational add(Rational&); 
