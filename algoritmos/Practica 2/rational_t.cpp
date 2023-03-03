@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier González Brtio
+// FECHA: 03/03/2023
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -12,194 +12,104 @@
 
 #include "rational_t.hpp"
 
-rational_t::rational_t(const int n, const int d)
-{
-  assert(d != 0);
-  num_ = n, den_ = d;
+Rational::Rational(const int numerador, const int denominador) {
+  assert(denominador != 0);
+  numerador_ = numerador, denominador_ = denominador;
 }
 
-// pauta de estilo [87]: 3 líneas de separación entre métodos
-
-// pauta de estilo [83]: tipo retornado en línea anterior al método
-inline
-int
-rational_t::get_num() const
-{
-  return num_;
+inline int Rational::get_num() {
+  return numerador_;
 }
 
-
-
-inline
-int
-rational_t::get_den() const
-{
-  return den_;
+inline int Rational::get_den() {
+  return denominador_;
 }
 
-
-  
-void
-rational_t::set_num(const int n)
-{
-  num_ = n;
+void Rational::set_num(const int numerador) {
+  numerador_ = numerador;
 }
 
-
-  
-void
-rational_t::set_den(const int d)
-{
-  assert(d != 0);
-  den_ = d;
+void Rational::set_den(const int denominador) {
+  assert(denominador != 0);
+  denominador_ = denominador;
 }
 
-
-
-inline
-double
-rational_t::value() const
-{ 
+inline double Rational::value() { 
   return double(get_num()) / get_den();
 }
 
-
-
-rational_t 
-rational_t::opposite() const
-{ 
-  return rational_t((-1)*get_num(), get_den());
+Rational Rational::opposite() { 
+  return Rational((-1)*get_num(), get_den());
 }
 
-
-
-rational_t
-rational_t::reciprocal() const
-{ 
-  return rational_t(get_den(), get_num());
+Rational Rational::reciprocal() { 
+  return Rational(get_den(), get_num());
 }
-
-
 
 // comparaciones
-bool
-rational_t::is_equal(const rational_t& r, const double precision) const
-{ 
+bool Rational::is_equal(const Rational& r, const double precision) { 
   return fabs(value() - r.value()) < precision;
 }
 
-
-
-bool
-rational_t::is_greater(const rational_t& r, const double precision) const
-{
+bool Rational::is_greater(const Rational& r, const double precision) {
   return (value() - r.value()) > precision;
 }
 
-
-
-bool
-rational_t::is_less(const rational_t& r, const double precision) const
-{
+bool Rational::is_less(const Rational& r, const double precision) {
   return r.is_greater(*this, precision);
 }
 
-
 // operaciones
-rational_t
-rational_t::add(const rational_t& r) const
-{
-  return rational_t(get_num() * r.get_den() + get_den() * r.get_num(), 
-                    get_den() * r.get_den());
+Rational Rational::add(const Rational& r) {
+  return Rational(get_num() * r.get_den() + get_den() * r.get_num(), get_den() * r.get_den());
 }
 
-
-
-rational_t
-rational_t::substract(const rational_t& r) const
-{
+Rational Rational::substract(const Rational& r) {
   return add(r.opposite());
 }
 
-
-
-rational_t
-rational_t::multiply(const rational_t& r) const
-{
-  return rational_t(get_num() * r.get_num(), get_den() * r.get_den());
+Rational Rational::multiply(const Rational& r) {
+  return Rational(get_num() * r.get_num(), get_den() * r.get_den());
 }
 
-
-
-rational_t
-rational_t::divide(const rational_t& r) const
-{
+Rational Rational::divide(const Rational& r) {
   return multiply(r.reciprocal());
 }
 
 
 // FASE I: operadores
-rational_t
-operator+(const rational_t& a, const rational_t& b)
-{
+Rational operator+(const Rational& a, const Rational& b) {
   // rellenar código
 }
 
-
-
-rational_t
-operator-(const rational_t& a, const rational_t& b)
-{
+Rational operator-(const Rational& a, const Rational& b) {
   // rellenar código
 }
 
-
-
-rational_t
-operator*(const rational_t& a, const rational_t& b)
-{
+Rational operator*(const Rational& a, const Rational& b) {
   // rellenar código
 }
 
-
-
-rational_t
-operator/(const rational_t& a, const rational_t& b)
-{
+Rational operator/(const Rational& a, const Rational& b) {
   // rellenar código
 }
-
-
 
 // E/S
-void
-rational_t::write(ostream& os) const
-{
+void Rational::write(ostream& os) const {
   os << get_num() << "/" << get_den() << "=" << value() << endl;
 }
 
-
-
-void
-rational_t::read(istream& is)
-{
-  is >> num_ >> den_;
-  assert(den_ != 0);
+void Rational::read(istream& is) {
+  is >> numerador_ >> denominador_;
+  assert(denominador_ != 0);
 }
 
-
-
-ostream&
-operator<<(ostream& os, const rational_t& r)
-{
+ostream& operator<<(ostream& os, const Rational& r) {
   r.write(os);
   return os;
 }
 
-
-istream&
-operator>>(istream& is, rational_t& r)
-{
+istream& operator>>(istream& is, Rational& r) {
   r.read(is);
   return is;
 }

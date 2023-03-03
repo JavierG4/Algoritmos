@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier González Brtio
+// FECHA: 03/03/2023
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 2
@@ -16,11 +16,10 @@
 using namespace std;
 
 template<class T>
-class vector_t
-{
-public:
-  vector_t(const int = 0);
-  ~vector_t();
+class Vector {
+ public:
+  Vector(const int = 0);
+  ~Vector();
   
   void resize(const int);
   
@@ -42,171 +41,115 @@ public:
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
-private:
-  T *v_;
-  int sz_;
+ private:
+  T *vector_;
+  int size_;
   
   void build(void);
   void destroy(void);
 };
 
-
-
 template<class T>
-vector_t<T>::vector_t(const int n)
-{ sz_ = n;
+Vector<T>::Vector(const int n) { 
+  size_ = n;
   build();
 }
 
-
-
 template<class T>
-vector_t<T>::~vector_t()
-{
+Vector<T>::~Vector() {
   destroy();
 }
 
-
-
 template<class T>
-void
-vector_t<T>::build()
-{
-  v_ = NULL;
-  if (sz_ != 0) {
-    v_ = new T[sz_];
-    assert(v_ != NULL);
+void Vector<T>::build() {
+  vector_ = NULL;
+  if (size_ != 0) {
+    vector_ = new T[size_];
+    assert(vector_ != NULL);
   }
 }
 
-
-
 template<class T>
-void
-vector_t<T>::destroy()
-{
-  if (v_ != NULL) {
-    delete[] v_;
-    v_ = NULL;
+void Vector<T>::destroy() {
+  if (vector_ != NULL) {
+    delete[] vector_;
+    vector_ = NULL;
   }
-  sz_ = 0;
+  size_ = 0;
 }
 
-
-
 template<class T>
-void
-vector_t<T>::resize(const int n)
-{
+void Vector<T>::resize(const int n) {
   destroy();
-  sz_ = n;
+  size_ = n;
   build();
 }
 
-
-
 template<class T>
-inline T
-vector_t<T>::get_val(const int i) const
-{
+inline T Vector<T>::get_val(const int i) const {
   assert(i >= 0 && i < get_size());
-  return v_[i];
+  return vector_[i];
 }
 
-
-
 template<class T>
-inline int
-vector_t<T>::get_size() const
-{
-  return sz_;
+inline int Vector<T>::get_size() {
+  return size_;
 }
 
-
-
 template<class T>
-void
-vector_t<T>::set_val(const int i, const T d)
-{
+void Vector<T>::set_val(const int i, const T d) {
   assert(i >= 0 && i < get_size());
-  v_[i] = d;
+  vector_[i] = d;
 }
 
-
-
 template<class T>
-T&
-vector_t<T>::at(const int i)
-{
+T& Vector<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
-  return v_[i];
+  return vector_[i];
 }
 
 
 
 template<class T>
-T&
-vector_t<T>::operator[](const int i)
-{
+T& Vector<T>::operator[](const int i) {
   return at(i);
 }
 
-
-
 template<class T>
-const T&
-vector_t<T>::at(const int i) const
-{
+const T& Vector<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
-  return v_[i];
+  return vector_[i];
 }
 
-
-
 template<class T>
-const T&
-vector_t<T>::operator[](const int i) const
-{
+const T& Vector<T>::operator[](const int i)  {
   return at(i);
 }
 
-
-
 template<class T>
-void
-vector_t<T>::write(ostream& os) const
-{ 
+void Vector<T>::write(ostream& os) { 
   os << get_size() << ":\t";
-  for (int i = 0; i < get_size(); i++)
+  for (int i = 0; i < get_size(); i++) {
     os << at(i) << "\t";
-  os << endl;
+    os << endl;
+  }
 }
-
-
 
 template<class T>
-void
-vector_t<T>::read(istream& is)
-{
-  is >> sz_;
-  resize(sz_);
-  for (int i = 0; i < sz_; ++i)
+void Vector<T>::read(istream& is) {
+  is >> size_;
+  resize(size_);
+  for (int i = 0; i < size_; ++i) {
     is >> at(i);
+  }
 }
-
 
 // FASE II: producto escalar
 template<class T>
-T
-scal_prod(const vector_t<T>& v, const vector_t<T>& w)
-{
+T scal_prod(const Vector<T>& v, const Vector<T>& w) {
   // rellenar código
 }
 
-
-
-double
-scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
-{
+double scal_prod(const Vector<Rational>& v, const Vector<Rational>& w) {
   // rellenar código 
 }
