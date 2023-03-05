@@ -65,11 +65,11 @@ Rational Rational::substract(Rational& r) { // Método que devuelve la resta de 
   return Rational ((numerador_ * r.get_denominador()) - (get_numerador() * denominador_) , denominador_ * r.get_denominador());
 }
 
-Rational Rational::multiply(Rational& r) { // Método que devuelve la multiplicación en forma de clase Rational
+Rational Rational::multiply(Rational& r) { // Método que devuelve la multiplicación de a * b en forma de clase Rational
   return Rational ((get_numerador() * numerador_ ), denominador_ * r.get_denominador());
 }
 
-Rational Rational::divide(Rational& r) { // Método que devuelve la suma de a + b en forma de clase Rational
+Rational Rational::divide(Rational& r) { // Método que devuelve la división entre a y b en forma de clase Rational
   return Rational (denominador_ * get_numerador(),numerador_ * get_denominador());
 }
 

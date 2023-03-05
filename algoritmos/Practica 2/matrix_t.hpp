@@ -51,14 +51,11 @@ private:
 
 
 template<class T>
-Matrix<T>::Matrix(const int m, const int n)
-{ 
-  filas_ = m;
-  columnas_ = n;
+Matrix<T>::Matrix(const int filas, const int columnas) { 
+  filas_ = columnas;
+  columnas_ = columnas;
   vector_.resize(filas_ * columnas_);
 }
-
-
 
 template<class T>
 Matrix<T>::~Matrix() {}
@@ -67,14 +64,13 @@ template<class T>
 void Matrix<T>::resize(const int filas, const int columnas)
 {
   assert(filas > 0 && columnas > 0);
-  filas_ = m;
-  columnas_ = n;
+  filas_ = filas;
+  columnas_ = columnas;
   vector_.resize(filas_ * columnas_);
 }
 
 template<class T>
-inline int
-Matrix<T>::get_filas() {
+inline int Matrix<T>::get_filas() {
   return filas_;
 }
 
@@ -95,31 +91,20 @@ T& Matrix<T>::operator()(const int i, const int j) {
   return at(i, j);
 }
 
-
-
 template<class T>
-const T&
-Matrix<T>::at(const int i, const int j) const
-{
+const T& Matrix<T>::at(const int i, const int j) {
   assert(i > 0 && i <= get_filas());
   assert(j > 0 && j <= get_columnas());
   return vector_[pos(i, j)];
 }
 
-
-
 template<class T>
-const T&
-Matrix<T>::operator()(const int i, const int j) const
-{
+const T& Matrix<T>::operator()(const int i, const int j) {
   return at(i, j);
 }
 
-
-
 template<class T>
-void
-Matrix<T>::write(ostream& os) const
+void Matrix<T>::write(ostream& os) const
 { 
   os << get_filas() << "x" << get_columnas() << endl;
   for (int i = 1; i <= get_filas(); ++i) {
@@ -130,36 +115,26 @@ Matrix<T>::write(ostream& os) const
   os << endl;
 }
 
-
-
 template<class T>
-void
-Matrix<T>::read(istream& is)
-{
+void Matrix<T>::read(istream& is) {
   is >> filas_ >> columnas_;
   resize(filas_, columnas_);
-  for (int i = 1; i <= get_filas(); ++i)
-    for (int j = 1; j <= get_columnas(); ++j)
+  for (int i = 1; i <= get_filas(); ++i) {
+    for (int j = 1; j <= get_columnas(); ++j) {
       is >> at(i, j);
+    }
+  }
 }
 
-
 template<class T>
-inline
-int
-Matrix<T>::pos(const int i, const int j) const
-{
+inline int Matrix<T>::pos(const int i, const int j) const {
   assert(i > 0 && i <= get_filas());
   assert(j > 0 && j <= get_columnas());
   return (i - 1) * get_columnas() + (j - 1);
 }
 
-
-
 // FASE III: producto matricial
-template<class T>
-void
-Matrix<T>::multiply(const Matrix<T>& A, const Matrix<T>& B)
-{
+template<class T> 
+void Matrix<T>::multiply(const Matrix<T>& A, const Matrix<T>& B) {
   // rellenar código
 }

@@ -9,12 +9,9 @@
 //              https://geosoft.no/development/cppstyle.html
 // COMPILACIÓN: g++ -g Rational.cpp main_p2.cpp -o main_p2
 
-// pauta de estilo [92]: comentarios multilínea usando solo "//"
-
 #include <iostream>
 #include <cmath>
 
-// pauta de estilo [41]: ficheros de cabecera agrupados y separados
 #include "rational_t.hpp"
 
 #include "vector_t.hpp"

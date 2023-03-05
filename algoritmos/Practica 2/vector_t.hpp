@@ -24,8 +24,8 @@ class Vector {
   void resize(const int);
   
   // getters
-  T get_val(const int) const;
-  int get_size(void) const;
+  T get_val(const int);
+  int get_size(void);
   
   // setters
   void set_val(const int, const T);
@@ -35,10 +35,10 @@ class Vector {
   T& operator[](const int);
   
   // getters constantes
-  const T& at(const int) const;
-  const T& operator[](const int) const;
+  const T& at(const int);
+  const T& operator[](const int);
 
-  void write(ostream& = cout) const;
+  void write(ostream& = cout);
   void read(istream& = cin);
 
  private:
@@ -86,7 +86,7 @@ void Vector<T>::resize(const int n) {
 }
 
 template<class T>
-inline T Vector<T>::get_val(const int i) const {
+inline T Vector<T>::get_val(const int i) {
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
@@ -107,8 +107,6 @@ T& Vector<T>::at(const int i) {
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
-
-
 
 template<class T>
 T& Vector<T>::operator[](const int i) {
@@ -147,9 +145,17 @@ void Vector<T>::read(istream& is) {
 // FASE II: producto escalar
 template<class T>
 T scal_prod(const Vector<T>& v, const Vector<T>& w) {
-  // rellenar código
+  double resultado;
+  for(int i = 0 ;i < get_size(); i++) {
+    resultado += v.vector_[i] * w.vector_[i];
+  }
+  return resultado;
 }
 
 double scal_prod(const Vector<Rational>& v, const Vector<Rational>& w) {
-  // rellenar código 
+  Rational resultado;
+  for(int i = 0 ;i < get_size(); i++) {
+    resultado += v.vector_[i] * w.vector_[i];
+  }
+  return resultado;
 }
