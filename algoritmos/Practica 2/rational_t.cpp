@@ -56,12 +56,12 @@ bool Rational::is_greater(const Rational& r, const double precision) { // Métod
 }
 
 bool Rational::is_less(const Rational& r, const double precision) { // Método que que te dice si y es menor que la x
-  return r.is_greater(*this, precision);
+  return r.is_greater(value() - r.value()) > precision;
 }
 
 // operaciones
 Rational Rational::add(const Rational& r) { // Método que devuelve la suma de a + b en forma de clase Rational
-  return Rational(get_num() * r.get_den() + get_den() * r.get_num(), get_den() * r.get_den());
+  return Rational((get_num() * r.get_den()) + (get_den() * r.get_num()), get_den() * r.get_den());
 }
 
 Rational Rational::substract(const Rational& r) { // Método que devuelve la resta de b-a en forma de clase Rational

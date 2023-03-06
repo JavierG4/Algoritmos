@@ -145,7 +145,8 @@ void Vector<T>::read(istream& is) {
 // FASE II: producto escalar
 template<class T>
 T scal_prod(const Vector<T>& v, const Vector<T>& w) {
-  double resultado;
+  double resultado = 0;
+  assert(v.get_size() == w.get_size());
   for(int i = 0 ;i < get_size(); i++) {
     resultado += v.vector_[i] * w.vector_[i];
   }
@@ -153,9 +154,10 @@ T scal_prod(const Vector<T>& v, const Vector<T>& w) {
 }
 
 double scal_prod(const Vector<Rational>& v, const Vector<Rational>& w) {
-  Rational resultado;
+  double resultado;
+  assert(v.get_size() == w.get_size());
   for(int i = 0 ;i < get_size(); i++) {
-    resultado += v.vector_[i] * w.vector_[i];
+    resultado += v.at(i).value(i) * w.at(i).value(i);
   }
   return resultado;
 }

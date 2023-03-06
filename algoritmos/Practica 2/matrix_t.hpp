@@ -26,16 +26,16 @@ class Matrix {
   void resize(const int, const int);
   // getters
 
-  int get_filas(void) const;
-  int get_columnas(void) const;
+  const int get_filas(void);
+  const int get_columnas(void) ;
 
   // getters-setters
   T& at(const int, const int);
   T& operator()(const int, const int);
 
   // getters constantes
-  const T& at(const int, const int) const;
-  const T& operator()(const int, const int) const;
+  const T& at(const int, const int);
+  const T& operator()(const int, const int);
   
   // operaciones y operadores
   void multiply(const Matrix<T>&, const Matrix<T>&);
@@ -61,8 +61,7 @@ template<class T>
 Matrix<T>::~Matrix() {}
 
 template<class T>
-void Matrix<T>::resize(const int filas, const int columnas)
-{
+void Matrix<T>::resize(const int filas, const int columnas) {
   assert(filas > 0 && columnas > 0);
   filas_ = filas;
   columnas_ = columnas;
@@ -127,7 +126,7 @@ void Matrix<T>::read(istream& is) {
 }
 
 template<class T>
-inline int Matrix<T>::pos(const int i, const int j) const {
+inline int Matrix<T>::pos(const int i, const int j) {
   assert(i > 0 && i <= get_filas());
   assert(j > 0 && j <= get_columnas());
   return (i - 1) * get_columnas() + (j - 1);
@@ -136,5 +135,11 @@ inline int Matrix<T>::pos(const int i, const int j) const {
 // FASE III: producto matricial
 template<class T> 
 void Matrix<T>::multiply(const Matrix<T>& A, const Matrix<T>& B) {
-  // rellenar código
+  assert (A.get_columnas() == B.get_filas());
+  for(int i = 0; i < A.get_filas() - 1; i++) {
+    for (int j = 0; j < B.get_columnas() - 1; j++){
+      for(int z = 0; z < A.get_columnas(); z++)
+        C(i,j) += (A(i,z) * B(z,j));
+    }
+  }
 }

@@ -37,7 +37,7 @@ int main() {
   (a/b).write();
   
   cout << endl;
-  
+
   // FASE II
   Vector<double> v, w;
   v.read(), v.write();
@@ -62,3 +62,4 @@ int main() {
   
   return 0;
 }
+
