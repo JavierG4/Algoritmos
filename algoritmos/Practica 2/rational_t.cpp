@@ -94,7 +94,7 @@ Rational operator/(const Rational& a, const Rational& b) { // La división media
 }
 
 // E/S
-void Rational::write(ostream& os) const {
+void Rational::write(ostream& os) const { // Este procedimiento Imrpime el numerador / Denominador y su resultado
   os << get_num() << "/" << get_den() << "=" << value() << endl;
 }
 
@@ -103,7 +103,7 @@ void Rational::read(istream& is) { //Procedimiento que recoge el valor de  numer
   assert(denominador_ != 0);
 }
 
-ostream& operator<<(ostream& os, const Rational& r) {
+ostream& operator<<(ostream& os, const Rational& r) { 
   r.write(os);
   return os;
 }

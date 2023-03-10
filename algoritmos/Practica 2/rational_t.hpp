@@ -23,8 +23,8 @@ using namespace std;
 
 class Rational {
  public:
-  Rational(const int = 0, const int = 1); // Constructor de la clase Rational
-  ~Rational(){} // Destructor de la clase Rational
+  Rational(const int = 0, const int = 1); 
+  ~Rational(){} 
   
   // getters
   int get_num() const;

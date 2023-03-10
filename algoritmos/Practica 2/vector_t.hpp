@@ -15,8 +15,8 @@
 
 using namespace std;
 
-template<class T>
-class Vector {
+template<class T> // Plantilla
+class Vector { // Inicio de la clase Vector
  public:
   Vector(const int = 0);
   ~Vector();
@@ -50,18 +50,18 @@ class Vector {
 };
 
 template<class T>
-Vector<T>::Vector(const int n) { 
+Vector<T>::Vector(const int n) { // Constructor de la clase
   size_ = n;
   build();
 }
 
 template<class T>
-Vector<T>::~Vector() {
+Vector<T>::~Vector() { // Destructor de la clase Vector
   destroy();
 }
 
 template<class T>
-void Vector<T>::build() {
+void Vector<T>::build() { // Procedimiento que contruye el vector 
   vector_ = NULL;
   if (size_ != 0) {
     vector_ = new T[size_];
@@ -70,7 +70,7 @@ void Vector<T>::build() {
 }
 
 template<class T>
-void Vector<T>::destroy() {
+void Vector<T>::destroy() { // Procedimiento que se encarga de hacer el delete del vector construido y se usa en el destructor
   if (vector_ != NULL) {
     delete[] vector_;
     vector_ = NULL;
@@ -79,53 +79,53 @@ void Vector<T>::destroy() {
 }
 
 template<class T>
-void Vector<T>::resize(const int n) {
+void Vector<T>::resize(const int n) { // Procedimiento que destruye el anterior vector, cambia su tamaño y genera uno nuevo
   destroy();
   size_ = n;
   build();
 }
 
 template<class T>
-inline T Vector<T>::get_val(const int i) const{
+inline T Vector<T>::get_val(const int i) const{ //Getter que devuelve el valor del vector en i
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
 
 template<class T>
-inline int Vector<T>::get_size() const{
+inline int Vector<T>::get_size() const{ // Devuelve el tamaño del vector
   return size_;
 }
 
 template<class T>
-void Vector<T>::set_val(const int i, const T d) {
+void Vector<T>::set_val(const int i, const T d) { // Setter del valor en i
   assert(i >= 0 && i < get_size());
   vector_[i] = d;
 }
 
 template<class T>
-T& Vector<T>::at(const int i) {
+T& Vector<T>::at(const int i) { // Función que devuelve el valor de i en el vector
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
 
 template<class T>
-T& Vector<T>::operator[](const int i) {
+T& Vector<T>::operator[](const int i) { // Operador que al usar [] devuelve el valor en i
   return at(i);
 }
 
 template<class T>
-const T& Vector<T>::at(const int i) const{
+const T& Vector<T>::at(const int i) const{ // Función que devuelve el valor de i en el vector
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
 
 template<class T>
-const T& Vector<T>::operator[](const int i) const{
+const T& Vector<T>::operator[](const int i) const{ // Operador que al usar [] devuelve el valor en i
   return at(i);
 }
 
 template<class T>
-void Vector<T>::write(ostream& os) const{ 
+void Vector<T>::write(ostream& os) const{ // Procedimiento que imprime en pantalla el size y el valor en i
   os << get_size() << ":\t";
   for (int i = 0; i < get_size(); i++) {
     os << at(i) << "\t";
@@ -134,7 +134,7 @@ void Vector<T>::write(ostream& os) const{
 }
 
 template<class T>
-void Vector<T>::read(istream& is) {
+void Vector<T>::read(istream& is) { // Procedimiento que lee valor de size e introduce valores en el vector
   is >> size_;
   resize(size_);
   for (int i = 0; i < size_; ++i) {
@@ -144,7 +144,7 @@ void Vector<T>::read(istream& is) {
 
 // FASE II: producto escalar
 template<class T>
-T scal_prod(const Vector<T>& v, const Vector<T>& w) {
+T scal_prod(const Vector<T>& v, const Vector<T>& w) { // Producto escalar entre dos vectores de tipo double
   double resultado = 0;
   assert(v.get_size() == w.get_size());
   for(int i = 0 ;i < v.get_size(); i++) {
@@ -153,7 +153,7 @@ T scal_prod(const Vector<T>& v, const Vector<T>& w) {
   return resultado;
 }
 
-double scal_prod(const Vector<Rational>& v, const Vector<Rational>& w) {
+double scal_prod(const Vector<Rational>& v, const Vector<Rational>& w) { // Producto escalar entre dos vectores de tipo Rational
   double resultado;
   assert(v.get_size() == w.get_size());
   for(int i = 0 ;i < v.get_size(); i++) {

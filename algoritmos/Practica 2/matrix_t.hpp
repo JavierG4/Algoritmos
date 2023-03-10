@@ -17,8 +17,8 @@
 
 using namespace std;
 
-template<class T>
-class Matrix {
+template<class T> // Plantilla
+class Matrix { // Inicio de la clase Matrix
  public:
   Matrix(const int = 0, const int = 0);
   ~Matrix();
@@ -52,17 +52,17 @@ private:
 
 
 template<class T>
-Matrix<T>::Matrix(const int filas, const int columnas) { 
+Matrix<T>::Matrix(const int filas, const int columnas) { //Constructor de la clase Matrix
   filas_ = columnas;
   columnas_ = columnas;
   vector_.resize(filas_ * columnas_);
 }
 
 template<class T>
-Matrix<T>::~Matrix() {}
+Matrix<T>::~Matrix() {} // Destructor de la clase Matrix
 
 template<class T>
-void Matrix<T>::resize(const int filas, const int columnas) {
+void Matrix<T>::resize(const int filas, const int columnas) { // Procedimiento que te actualiza el tamaño de las columnas y las filas
   assert(filas > 0 && columnas > 0);
   filas_ = filas;
   columnas_ = columnas;
@@ -70,41 +70,41 @@ void Matrix<T>::resize(const int filas, const int columnas) {
 }
 
 template<class T>
-inline int Matrix<T>::get_filas() const{
+inline int Matrix<T>::get_filas() const{ // Función que devuelve las filas
   return filas_;
 }
 
 template<class T>
-inline int Matrix<T>::get_columnas() const{
+inline int Matrix<T>::get_columnas() const{ // Función que devuelve las columnas
   return columnas_;
 }
 
 template<class T>
-T& Matrix<T>::at(const int i, const int j) {
+T& Matrix<T>::at(const int i, const int j) { // Función que devuelve el valor de la matriz en (i,j)
   assert(i > 0 && i <= get_filas());
   assert(j > 0 && j <= get_columnas());
   return vector_[pos(i, j)];
 }
 
 template<class T>
-T& Matrix<T>::operator()(const int i, const int j) {
+T& Matrix<T>::operator()(const int i, const int j) { // Operador que al usar (i,j) Te devuelve su valor en esa posición
   return at(i, j);
 }
 
 template<class T>
-const T& Matrix<T>::at(const int i, const int j) const{
+const T& Matrix<T>::at(const int i, const int j) const{ // Función que devuelve el valor de la matriz en (i,j)
   assert(i > 0 && i <= get_filas());
   assert(j > 0 && j <= get_columnas());
   return vector_[pos(i, j)];
 }
 
 template<class T>
-const T& Matrix<T>::operator()(const int i, const int j) const{
+const T& Matrix<T>::operator()(const int i, const int j) const{ // Operador que al usar (i,j) Te devuelve su valor en esa posición
   return at(i, j);
 }
 
 template<class T>
-void Matrix<T>::write(ostream& os) const { 
+void Matrix<T>::write(ostream& os) const { // Procedimiento que imprime en pantalla filas x columnas y devuelve los valores de la matriz
   os << get_filas() << "x" << get_columnas() << endl;
   for (int i = 1; i <= get_filas(); ++i) {
     for (int j = 1; j <= get_columnas(); ++j)
@@ -115,7 +115,7 @@ void Matrix<T>::write(ostream& os) const {
 }
 
 template<class T>
-void Matrix<T>::read(istream& is) {
+void Matrix<T>::read(istream& is) { // Procedimiento que lee el tamaño de filas y columnas y al meter valores los mete en la matriz
   is >> filas_ >> columnas_;
   resize(filas_, columnas_);
   for (int i = 1; i <= get_filas(); ++i) {
