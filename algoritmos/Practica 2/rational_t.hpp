@@ -24,30 +24,30 @@ using namespace std;
 class Rational {
  public:
   Rational(const int = 0, const int = 1); // Constructor de la clase Rational
-  ~Rational() // Destructor de la clase Rational
+  ~Rational(){} // Destructor de la clase Rational
   
   // getters
-  const int get_num();
-  const int get_den();
+  int get_num() const;
+  int get_den() const;
   
   // setters
   void set_num(const int);
   void set_den(const int);
 
-  double value(void);
-  Rational opposite(void);
-  Rational reciprocal(void);
+  double value(void) const;
+  Rational opposite(void) const;
+  Rational reciprocal(void) const;
 
-  bool is_equal(const Rational&, const double precision = EPSILON);
-  bool is_greater(const Rational&, const double precision = EPSILON);
-  bool is_less(const Rational&, const double precision = EPSILON);
+  bool is_equal(const Rational&, const double precision = EPSILON) const;
+  bool is_greater(const Rational&, const double precision = EPSILON) const;
+  bool is_less(const Rational&, const double precision = EPSILON) const;
 
-  Rational add(const Rational&);
-  Rational substract(const Rational&);
-  Rational multiply(const Rational&);
-  Rational divide(const Rational&);
+  Rational add(const Rational&) const;
+  Rational substract(const Rational&) const;
+  Rational multiply(const Rational&) const;
+  Rational divide(const Rational&) const;
 
-  void write(ostream& os = cout);
+  void write(ostream& os = cout) const;
   void read(istream& is = cin);
   
 private:

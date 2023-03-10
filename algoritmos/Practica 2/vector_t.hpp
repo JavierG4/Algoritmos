@@ -24,8 +24,8 @@ class Vector {
   void resize(const int);
   
   // getters
-  T get_val(const int);
-  int get_size(void);
+  T get_val(const int) const;
+  int get_size(void) const;
   
   // setters
   void set_val(const int, const T);
@@ -35,10 +35,10 @@ class Vector {
   T& operator[](const int);
   
   // getters constantes
-  const T& at(const int);
-  const T& operator[](const int);
+  const T& at(const int) const;
+  const T& operator[](const int) const;
 
-  void write(ostream& = cout);
+  void write(ostream& = cout) const;
   void read(istream& = cin);
 
  private:
@@ -86,13 +86,13 @@ void Vector<T>::resize(const int n) {
 }
 
 template<class T>
-inline T Vector<T>::get_val(const int i) {
+inline T Vector<T>::get_val(const int i) const{
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
 
 template<class T>
-inline int Vector<T>::get_size() {
+inline int Vector<T>::get_size() const{
   return size_;
 }
 
@@ -114,18 +114,18 @@ T& Vector<T>::operator[](const int i) {
 }
 
 template<class T>
-const T& Vector<T>::at(const int i) {
+const T& Vector<T>::at(const int i) const{
   assert(i >= 0 && i < get_size());
   return vector_[i];
 }
 
 template<class T>
-const T& Vector<T>::operator[](const int i)  {
+const T& Vector<T>::operator[](const int i) const{
   return at(i);
 }
 
 template<class T>
-void Vector<T>::write(ostream& os) { 
+void Vector<T>::write(ostream& os) const{ 
   os << get_size() << ":\t";
   for (int i = 0; i < get_size(); i++) {
     os << at(i) << "\t";
@@ -147,8 +147,8 @@ template<class T>
 T scal_prod(const Vector<T>& v, const Vector<T>& w) {
   double resultado = 0;
   assert(v.get_size() == w.get_size());
-  for(int i = 0 ;i < get_size(); i++) {
-    resultado += v.vector_[i] * w.vector_[i];
+  for(int i = 0 ;i < v.get_size(); i++) {
+    resultado += v.at(i) * w.at(i);
   }
   return resultado;
 }
@@ -156,8 +156,8 @@ T scal_prod(const Vector<T>& v, const Vector<T>& w) {
 double scal_prod(const Vector<Rational>& v, const Vector<Rational>& w) {
   double resultado;
   assert(v.get_size() == w.get_size());
-  for(int i = 0 ;i < get_size(); i++) {
-    resultado += v.at(i).value(i) * w.at(i).value(i);
+  for(int i = 0 ;i < v.get_size(); i++) {
+    resultado += v.at(i).value() * w.at(i).value();
   }
   return resultado;
 }

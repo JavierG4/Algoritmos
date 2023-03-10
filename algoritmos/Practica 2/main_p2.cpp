@@ -7,7 +7,7 @@
 // COMENTARIOS: se indican entre [] las pautas de estilo aplicadas de
 //              "C++ Programming Style Guidelines"
 //              https://geosoft.no/development/cppstyle.html
-// COMPILACIÓN: g++ -g Rational.cpp main_p2.cpp -o main_p2
+// COMPILACIÓN: g++ -g rational_t.cpp main_p2.cpp -o main_p2
 
 #include <iostream>
 #include <cmath>
