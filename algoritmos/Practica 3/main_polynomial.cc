@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier Gonzalez Brito
+// FECHA: 10/03/2023 
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
@@ -15,8 +15,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
   Polynomial p1, p2, p3;
   
   cin >> p1 >> p2 >> p3;

@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier Gonzalez Brito 
+// FECHA: 10/03/2023 
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 4.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
@@ -19,22 +19,21 @@
 
 #define EPS 1.0e-6
 
-typedef pair_t<double> pair_double_t;
-typedef vector_t<pair_double_t> pair_vector_t;
+typedef Pair_t<double> pair_double_t;
+typedef Vector_t<pair_double_t> pair_Vector_t;
 
-class sparse_vector_t {
+class sparse_Vector_t {
  public:
   // constructores
-  sparse_vector_t(const int = 0);
-  sparse_vector_t(const vector_t<double>&,
-		  const double = EPS); // constructor normal
-  sparse_vector_t(const sparse_vector_t&);  // constructor de copia
+  sparse_Vector_t(const int = 0);
+  sparse_Vector_t(const Vector_t<double>&, const double = EPS); // constructor normal
+  sparse_Vector_t(const sparse_Vector_t&);  // constructor de copia
 
   // operador de asignación
-  sparse_vector_t& operator=(const sparse_vector_t&);
+  sparse_Vector_t& operator=(const sparse_Vector_t&);
 
   // destructor
-  ~sparse_vector_t();
+  ~sparse_Vector_t();
   
   // getters
   int get_nz(void) const;
@@ -52,7 +51,7 @@ class sparse_vector_t {
   void write(std::ostream& = std::cout) const;
 
  private:
-  pair_vector_t pv_;  // valores + índices
+  pair_Vector_t pv_;  // valores + índices
   int nz_;            // nº de valores distintos de cero = tamaño del vector
   int n_;             // tamaño del vector original
 
@@ -64,21 +63,21 @@ bool IsNotZero(const double val, const double eps = EPS) {
   return fabs(val) > eps;
 }
 
-sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
+sparse_Vector_t::sparse_Vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
 
 // FASE II
-sparse_vector_t::sparse_vector_t(const vector_t<double>& v, const double eps)
+sparse_Vector_t::sparse_Vector_t(const Vector_t<double>& v, const double eps)
     : pv_(), nz_(0), n_(0) {
   // poner el código aquí
 }
 
 // constructor de copia
-sparse_vector_t::sparse_vector_t(const sparse_vector_t& w) {
+sparse_Vector_t::sparse_Vector_t(const sparse_Vector_t& w) {
   *this = w;  // se invoca directamente al operator=
 }
 
 // operador de asignación
-sparse_vector_t& sparse_vector_t::operator=(const sparse_vector_t& w) {
+sparse_Vector_t& sparse_Vector_t::operator=(const sparse_Vector_t& w) {
   nz_ = w.get_nz();
   n_ = w.get_n();
   pv_ = w.pv_;
@@ -86,43 +85,43 @@ sparse_vector_t& sparse_vector_t::operator=(const sparse_vector_t& w) {
   return *this;
 }
 
-sparse_vector_t::~sparse_vector_t() {}
+sparse_Vector_t::~sparse_Vector_t() {}
 
-inline int sparse_vector_t::get_nz() const {
+inline int sparse_Vector_t::get_nz() const {
   return nz_;
 }
 
-inline int sparse_vector_t::get_n() const {
+inline int sparse_Vector_t::get_n() const {
   return n_;
 }
 
-pair_double_t& sparse_vector_t::at(const int i) {
+pair_double_t& sparse_Vector_t::at(const int i) {
   assert(i >= 0 && i < get_nz());
   return pv_[i];
 }
 
-pair_double_t& sparse_vector_t::operator[](const int i) {
+pair_double_t& sparse_Vector_t::operator[](const int i) {
   return at(i);
 }
 
-const pair_double_t& sparse_vector_t::at(const int i) const {
+const pair_double_t& sparse_Vector_t::at(const int i) const {
   assert(i >= 0 && i < get_nz());
   return pv_[i];
 }
 
-const pair_double_t& sparse_vector_t::operator[](const int i) const {
+const pair_double_t& sparse_Vector_t::operator[](const int i) const {
   return at(i);
 }
 
 // E/S
-void sparse_vector_t::write(std::ostream& os) const { 
+void sparse_Vector_t::write(std::ostream& os) const { 
   os << get_n() << "(" << get_nz() << "): [ ";
   for (int i = 0; i < get_nz(); i++)
     os << pv_[i] << " ";
 	os << "]" << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const sparse_vector_t& sv) {
+std::ostream& operator<<(std::ostream& os, const sparse_Vector_t& sv) {
   sv.write(os);
   return os;
 }

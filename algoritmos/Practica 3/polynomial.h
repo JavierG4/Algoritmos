@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier Gonzalez Brito
+// FECHA: 10/03/2023 
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 3
@@ -18,12 +18,11 @@
 #include "sparse_vector_t.h"
 
 // Clase para polinomios basados en vectores densos de doubles
-class Polynomial : public vector_t<double> {
+class Polynomial : public Vector_t<double> {
  public:
   // constructores
-  Polynomial(const int n = 0) : vector_t<double>(n) {};
-  Polynomial(const Polynomial& pol)
-      : vector_t<double>(pol) {}; // constructor de copia
+  Polynomial(const int n = 0) : Vector_t<double>(n) {};
+  Polynomial(const Polynomial& pol): Vector_t<double>(pol) {}; // constructor de copia
 
   // destructor
   ~Polynomial() {};
@@ -38,11 +37,11 @@ class Polynomial : public vector_t<double> {
 
 
 // Clase para polinomios basados en vectores dispersos
-class SparsePolynomial : public sparse_vector_t {
+class SparsePolynomial : public sparse_Vector_t {
  public:
   // constructores
-  SparsePolynomial(const int n = 0) : sparse_vector_t(n) {};
-  SparsePolynomial(const Polynomial& pol) : sparse_vector_t(pol) {};
+  SparsePolynomial(const int n = 0) : sparse_Vector_t(n) {};
+  SparsePolynomial(const Polynomial& pol) : sparse_Vector_t(pol) {};
   SparsePolynomial(const SparsePolynomial&);  // constructor de copia
 
   // destructor
@@ -58,15 +57,13 @@ class SparsePolynomial : public sparse_vector_t {
 };
 
 // E/S
-void Polynomial::Write(std::ostream& os, const double eps) const {
+void Polynomial::Write(std::ostream& os, const double eps) const { // Procedimiento que
   os << get_size() << ": [ ";
   bool first{true};
   for (int i{0}; i < get_size(); i++)
     if (IsNotZero(at(i), eps)) {
-      os << (!first ? " + " : "") << at(i)
-	 << (i > 1 ? " x^" : (i == 1) ? " x" : "");
-      if (i > 1)
-	os << i;
+      os << (!first ? " + " : "") << at(i) << (i > 1 ? " x^" : (i == 1) ? " x" : "");
+      if (i > 1) os << i;
       first = false;
     }
   os << " ]" << std::endl;
@@ -128,8 +125,7 @@ double SparsePolynomial::Eval(const double x) const {
 }
 
 // Comparación si son iguales dos polinomios representados por vectores dispersos
-bool SparsePolynomial::IsEqual(const SparsePolynomial& spol
-			       , const double eps) const {
+bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) const {
   bool differents = false;
   // poner el código aquí
   return !differents;
@@ -145,3 +141,4 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
 
 
 #endif  // POLYNOMIAL_H_
+
