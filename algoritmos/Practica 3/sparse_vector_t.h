@@ -66,9 +66,22 @@ bool IsNotZero(const double val, const double eps = EPS) {
 sparse_Vector_t::sparse_Vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
 
 // FASE II
-sparse_Vector_t::sparse_Vector_t(const Vector_t<double>& v, const double eps)
-    : pv_(), nz_(0), n_(0) {
-  // poner el código aquí
+sparse_Vector_t::sparse_Vector_t(const Vector_t<double>& v, const double eps) : pv_(), nz_(0), n_(0) {
+  n_ = v.get_size();
+  for(int i = 0; i < v.get_size(); i++) {
+    if (IsNotZero(v.get_val(i))) {
+      ++nz_;
+    }
+  }
+  pv_.resize( nz_);
+  for (int i = 0, j = 0; i < v.get_size(); i++) {
+    if (IsNotZero(v.get_val(i))) {
+      pair_double_t actual_pair {v.get_val(i), i};
+      pv_[j] = actual_pair;
+      ++j;
+    }
+  }
+
 }
 
 // constructor de copia
