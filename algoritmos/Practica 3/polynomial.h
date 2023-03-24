@@ -88,14 +88,13 @@ double Polynomial::Eval(const double x) const {
 // Comparación si son iguales dos polinomios representados por vectores densos
 bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  for(int i = 0; i < pol.get_size(); i++) {
+  for(int i = 0; i < pol.get_size() -1; i++) {
     if (at(i) != pol.at(i)) {
      return differents;
     }
   }
   return !differents;
 }
-
 // constructor de copia
 SparsePolynomial::SparsePolynomial(const SparsePolynomial& spol) {
   *this = spol;   // se invoca directamente al operator=
@@ -135,6 +134,9 @@ double SparsePolynomial::Eval(const double x) const {
 // Comparación si son iguales dos polinomios representados por vectores dispersos
 bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) const {
   bool differents = false;
+    if(get_nz() != spol.get_nz()) {
+      return differents;
+    }
     for (int i = 0; i < get_nz(); i++) {
       if (at(i).get_val() != spol.at(i).get_val()) {
         return differents;
@@ -147,12 +149,12 @@ bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) c
 // vector disperso y vector denso
 bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  for (int i = 0; i < get_nz(); i++) {
-    if (at(i).get_val() != pol.get_val(at(i).get_inx())) {
-      return differents;
-    }
+  SparsePolynomial other_pol{pol};
+  if (IsEqual(other_pol) == false) {
+    return differents;
   }
   return !differents;
+  
 }
 
 
