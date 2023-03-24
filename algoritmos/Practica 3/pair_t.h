@@ -38,34 +38,34 @@ template<class T> class Pair_t {
 };
 
 
-template<class T> Pair_t<T>::Pair_t() : val_(), inx_(-1) {}
+template<class T> Pair_t<T>::Pair_t() : val_(), inx_(-1) {} //Constructor de la clase pair_t
 
-template<class T> Pair_t<T>::Pair_t(T val, int inx) : val_(val), inx_(inx) {}
+template<class T> Pair_t<T>::Pair_t(T val, int inx) : val_(val), inx_(inx) {} //Constructor de la clase pair_t
 
-template<class T> Pair_t<T>::~Pair_t() {}
+template<class T> Pair_t<T>::~Pair_t() {} // DEstructor de la clase pair_t
 
-template<class T> void Pair_t<T>::set(T val, int inx) {
+template<class T> void Pair_t<T>::set(T val, int inx) { // Setter de la clase Pair_t
   val_ = val;
   inx_ = inx;
 }
 
-template<class T> int Pair_t<T>::get_inx() const {
+template<class T> int Pair_t<T>::get_inx() const { // Getter que devuelve el índice
   return inx_;
 }
 
-template<class T> T Pair_t<T>::get_val() const {
+template<class T> T Pair_t<T>::get_val() const { // Getter que devuelve el valor 
   return val_;
 }
 
-template<class T> std::istream& Pair_t<T>::read(std::istream& is) {
+template<class T> std::istream& Pair_t<T>::read(std::istream& is) { // función que lee datos y los introduce en inx_ y val_
   return is >> inx_ >> val_;
 }
 
-template<class T> std::ostream& Pair_t<T>::write(std::ostream& os) const {
+template<class T> std::ostream& Pair_t<T>::write(std::ostream& os) const { // Métodod que imprime en pantalla 
   return os << "(" << inx_ << ":" << val_ << ")";
 }
 
-template<class T> std::ostream& operator<<(std::ostream& os, const Pair_t<T>& p) {
+template<class T> std::ostream& operator<<(std::ostream& os, const Pair_t<T>& p) { // Operador para imprimir el p.write
   p.write(os);
   return os;
 }

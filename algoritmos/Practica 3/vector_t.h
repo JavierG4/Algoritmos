@@ -57,7 +57,7 @@ template<class T> class Vector_t {
 };
 
 
-template<class T> Vector_t<T>::Vector_t(const int n) : v_(NULL), sz_(n) {
+template<class T> Vector_t<T>::Vector_t(const int n) : v_(NULL), sz_(n) { // contructor de la clase vector
   build();
 }
 
@@ -75,11 +75,11 @@ template<class T> Vector_t<T>& Vector_t<T>::operator=(const Vector_t<T>& w) {
   return *this;
 }
 
-template<class T> Vector_t<T>::~Vector_t() {
+template<class T> Vector_t<T>::~Vector_t() { // Destructor de la clase vector_t
   destroy();
 }
 
-template<class T> void Vector_t<T>::build() {
+template<class T> void Vector_t<T>::build() { // Procedimiento que te contruye el vector
   v_ = NULL;
   if (sz_ != 0) {
     v_ = new T[sz_];
@@ -87,7 +87,7 @@ template<class T> void Vector_t<T>::build() {
   }
 }
 
-template<class T> void Vector_t<T>::destroy() {
+template<class T> void Vector_t<T>::destroy() { // Procedimiento que libera el espacio creado en el build
   if (v_ != NULL) {
     delete[] v_;
     v_ = NULL;
@@ -95,64 +95,64 @@ template<class T> void Vector_t<T>::destroy() {
   sz_ = 0;
 }
 
-template<class T> void Vector_t<T>::resize(const int n) {
+template<class T> void Vector_t<T>::resize(const int n) { // Procedimiento que reajusta el tamaño del vector
   destroy();
   sz_ = n;
   build();
 }
 
-template<class T> inline T Vector_t<T>::get_val(const int i) const {
+template<class T> inline T Vector_t<T>::get_val(const int i) const { //getter que te devuelve el val en i
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
-template<class T> inline int Vector_t<T>::get_size() const {
+template<class T> inline int Vector_t<T>::get_size() const { // getter que te devuelve el size
   return sz_;
 }
 
-template<class T> void Vector_t<T>::set_val(const int i, const T d) {
+template<class T> void Vector_t<T>::set_val(const int i, const T d) { // Setter que escribe el valor en una posición i con un valor d
   assert(i >= 0 && i < get_size());
   v_[i] = d;
 }
 
-template<class T> T& Vector_t<T>::at(const int i) {
+template<class T> T& Vector_t<T>::at(const int i) { // Función que devuelve el valor de la posición i en el vector v_
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
-template<class T> T& Vector_t<T>::operator[](const int i) {
+template<class T> T& Vector_t<T>::operator[](const int i) { // operador que devuelve el at(i)
   return at(i);
 }
 
-template<class T> const T& Vector_t<T>::at(const int i) const {
+template<class T> const T& Vector_t<T>::at(const int i) const { // Función que devuelve el valor de la posición i en el vector v_
   assert(i >= 0 && i < get_size());
   return v_[i];
 }
 
-template<class T> const T& Vector_t<T>::operator[](const int i) const {
+template<class T> const T& Vector_t<T>::operator[](const int i) const { // operador que devuelve el at(i)
   return at(i);
 }
 
-template<class T> void Vector_t<T>::read(std::istream& is) {
+template<class T> void Vector_t<T>::read(std::istream& is) { // Procedimiento que lee datos y los mete en el vector
   is >> sz_;
   resize(sz_);
   for (int i = 0; i < sz_; i++)
     is >> at(i);
 }
 
-template<class T> void Vector_t<T>::write(std::ostream& os) const {
+template<class T> void Vector_t<T>::write(std::ostream& os) const { // Procedimiento que imprime en pantalla
   os << get_size() << ": [ ";
   for (int i = 0; i < get_size(); i++)
     os << at(i) << (i != get_size() - 1 ? "\t" : "");
   os << " ]" << std::endl;
 }
 
-template<class T> std::istream& operator>>(std::istream& is, Vector_t<T>& v) {
+template<class T> std::istream& operator>>(std::istream& is, Vector_t<T>& v) { // Operador para hacer el read
   v.read(is);
   return is;
 }
 
-template<class T> std::ostream& operator<<(std::ostream& os, const Vector_t<T>& v) {
+template<class T> std::ostream& operator<<(std::ostream& os, const Vector_t<T>& v) { // operador para hacer el write
   v.write(os);
   return os;
 }

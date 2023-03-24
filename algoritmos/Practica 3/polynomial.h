@@ -57,7 +57,7 @@ class SparsePolynomial : public sparse_Vector_t {
 };
 
 // E/S
-void Polynomial::Write(std::ostream& os, const double eps) const { // Procedimiento que
+void Polynomial::Write(std::ostream& os, const double eps) const { // Procedimiento que que encarga de mostrar en consola los resultados
   os << get_size() << ": [ ";
   bool first{true};
   for (int i{0}; i < get_size(); i++)
@@ -69,7 +69,7 @@ void Polynomial::Write(std::ostream& os, const double eps) const { // Procedimie
   os << " ]" << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const Polynomial& p) {
+std::ostream& operator<<(std::ostream& os, const Polynomial& p) { // Operador para imprimir el procedimiento write
   p.Write(os);
   return os;
 }
@@ -77,7 +77,7 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& p) {
 // Operaciones con polinomios
 
 // Evaluación de un polinomio representado por vector denso
-double Polynomial::Eval(const double x) const {
+double Polynomial::Eval(const double x) const { // Método que te evaulua el polinómio
   double result{0.0};
   for(int i = 0; i < get_size(); i++){
     result += get_val(i) * pow(x,i);
@@ -86,7 +86,7 @@ double Polynomial::Eval(const double x) const {
 }
 
 // Comparación si son iguales dos polinomios representados por vectores densos
-bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const {
+bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const { // Método que devuelve true o false dependiendo de si dos polinomios densos son iguales
   bool differents = false;
   for(int i = 0; i < pol.get_size() -1; i++) {
     if (at(i) != pol.at(i)) {
@@ -101,7 +101,7 @@ SparsePolynomial::SparsePolynomial(const SparsePolynomial& spol) {
 }
 
 // E/S
-void SparsePolynomial::Write(std::ostream& os) const {
+void SparsePolynomial::Write(std::ostream& os) const { 
   os << get_n() << "(" << get_nz() << "): [ ";
   bool first{true};
   for (int i{0}; i < get_nz(); i++) {
@@ -123,7 +123,7 @@ std::ostream& operator<<(std::ostream& os, const SparsePolynomial& p) {
 // Operaciones con polinomios
 
 // Evaluación de un polinomio representado por vector disperso
-double SparsePolynomial::Eval(const double x) const {
+double SparsePolynomial::Eval(const double x) const { // Función que evalua n plonomio disperso
   double result{0.0};
   for(int i = 0; i < get_nz(); i++) {
     result += at(i).get_val() * pow(x, at(i).get_inx());
@@ -132,7 +132,7 @@ double SparsePolynomial::Eval(const double x) const {
 }
 
 // Comparación si son iguales dos polinomios representados por vectores dispersos
-bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) const {
+bool SparsePolynomial::IsEqual(const SparsePolynomial& spol, const double eps) const { // Método que devuelve true o false dependiendo de si dos polinomios dispersos son iguales
   bool differents = false;
     if(get_nz() != spol.get_nz()) {
       return differents;

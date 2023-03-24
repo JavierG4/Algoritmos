@@ -59,14 +59,14 @@ class sparse_Vector_t {
 };
 
 
-bool IsNotZero(const double val, const double eps = EPS) {
+bool IsNotZero(const double val, const double eps = EPS) { // Función que te dice si es 0 o no dandole un valor
   return fabs(val) > eps;
 }
 
-sparse_Vector_t::sparse_Vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
+sparse_Vector_t::sparse_Vector_t(const int n) : pv_(n), nz_(0), n_(n) {} // constructor de la clase sparse_Vector_t
 
 // FASE II
-sparse_Vector_t::sparse_Vector_t(const Vector_t<double>& v, const double eps) : pv_(), nz_(0), n_(0) {
+sparse_Vector_t::sparse_Vector_t(const Vector_t<double>& v, const double eps) : pv_(), nz_(0), n_(0) { // constructor de la clase sparse_Vector_t
   n_ = v.get_size();
   for(int i = 0; i < v.get_size(); i++) {
     if (IsNotZero(v.get_val(i))) {
@@ -90,7 +90,7 @@ sparse_Vector_t::sparse_Vector_t(const sparse_Vector_t& w) {
 }
 
 // operador de asignación
-sparse_Vector_t& sparse_Vector_t::operator=(const sparse_Vector_t& w) {
+sparse_Vector_t& sparse_Vector_t::operator=(const sparse_Vector_t& w) { // Operador que hace la igualdad entre dos vectores dispersos
   nz_ = w.get_nz();
   n_ = w.get_n();
   pv_ = w.pv_;
@@ -98,31 +98,31 @@ sparse_Vector_t& sparse_Vector_t::operator=(const sparse_Vector_t& w) {
   return *this;
 }
 
-sparse_Vector_t::~sparse_Vector_t() {}
+sparse_Vector_t::~sparse_Vector_t() {} // Destructor de la clase
 
-inline int sparse_Vector_t::get_nz() const {
+inline int sparse_Vector_t::get_nz() const { // getter que devuelve nz_
   return nz_;
 }
 
-inline int sparse_Vector_t::get_n() const {
+inline int sparse_Vector_t::get_n() const { // getter que devuelve n
   return n_;
 }
 
-pair_double_t& sparse_Vector_t::at(const int i) {
+pair_double_t& sparse_Vector_t::at(const int i) { // Función que devuelve el valor en la posición i
   assert(i >= 0 && i < get_nz());
   return pv_[i];
 }
 
-pair_double_t& sparse_Vector_t::operator[](const int i) {
+pair_double_t& sparse_Vector_t::operator[](const int i) { // operador que devuelve el valor en la posición i
   return at(i);
 }
 
-const pair_double_t& sparse_Vector_t::at(const int i) const {
+const pair_double_t& sparse_Vector_t::at(const int i) const {// Función que devuelve el valor en la posición i
   assert(i >= 0 && i < get_nz());
   return pv_[i];
 }
 
-const pair_double_t& sparse_Vector_t::operator[](const int i) const {
+const pair_double_t& sparse_Vector_t::operator[](const int i) const { // operador que devuelve el valor en la posición i
   return at(i);
 }
 
