@@ -50,10 +50,13 @@ bool IsNotZero(const double val, const double eps = EPS) {
 // FASE II
 // constructor
 SllPolynomial::SllPolynomial(const vector_t<double>& v, const double eps) {
-  // poner el código aquí
-  
+  sll_t lista;
+  for(int i = v.get_size() -1; i >= 0; i--) {
+    if (IsNotZero(v.get_val(i))) {
+      lista.push_front(new SllPolyNode(pair_double_t(v[i],i)));
+    }
+  }
 }
-
 
 // E/S
 void SllPolynomial::Write(std::ostream& os) const {
@@ -88,8 +91,13 @@ std::ostream& operator<<(std::ostream& os, const SllPolynomial& p) {
 // Evaluación de un polinomio representado por lista simple
 double SllPolynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
-  
+  sll_node_t<pair_double_t>* aux = get_head();
+  while (aux != NULL) {
+    int inx = aux->get_data().get_inx();
+    double val = aux->get_data().get_val();
+    result += val * pow(x,inx);
+    aux = aux->get_next();
+  }
   return result;
 }
 
