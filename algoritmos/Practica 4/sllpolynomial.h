@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier González Brito 
+// FECHA: 01/04/2023
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 2.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 4
@@ -50,10 +50,9 @@ bool IsNotZero(const double val, const double eps = EPS) {
 // FASE II
 // constructor
 SllPolynomial::SllPolynomial(const vector_t<double>& v, const double eps) {
-  sll_t lista;
   for(int i = v.get_size() -1; i >= 0; i--) {
     if (IsNotZero(v.get_val(i))) {
-      lista.push_front(new SllPolyNode(pair_double_t(v[i],i)));
+      push_front(new SllPolyNode(pair_double_t(v[i],i)));
     }
   }
 }

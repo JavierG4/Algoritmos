@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Javier González Brito 
+// FECHA: 01/04/2023
+// EMAIL:alu0101548197@ull.edu.es 
 // VERSION: 3.1
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 4
