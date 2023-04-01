@@ -101,21 +101,69 @@ double SllPolynomial::Eval(const double x) const {
 }
 
 // Comparación si son iguales dos polinomios representados por listas simples
-bool SllPolynomial::IsEqual(const SllPolynomial& sllpol,
-			    const double eps) const {
+bool SllPolynomial::IsEqual(const SllPolynomial& sllpol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  sll_node_t<pair_double_t>* aux1 = get_head();
+  sll_node_t<pair_double_t>* aux2 = sllpol.get_head();
+  while(aux1 != NULL || aux2 != NULL){
+    if(aux1->get_data().get_val() != aux2->get_data().get_val()){
+      return differents;
+    }
+    aux1 = aux1->get_next();
+    aux2 = aux2->get_next();
+  }
 
   return !differents;
 }
 
 // FASE IV
 // Generar nuevo polinomio suma del polinomio invocante mas otro polinomio
-void SllPolynomial::Sum(const SllPolynomial& sllpol,
-			SllPolynomial& sllpolsum,
-			const double eps) {
-  // poner el código aquí
+void SllPolynomial::Sum(const SllPolynomial& sllpol, SllPolynomial& sllpolsum, const double eps) {
+  sll_node_t<pair_double_t>* aux1 = get_head();
+  sll_node_t<pair_double_t>* aux2 = sllpol.get_head();
+  sll_node_t<pair_double_t>* nodo = NULL;
+  if(aux1-> get_data().get_inx() = aux2->get_data().get_inx()) {
+    int sum = aux1->get_data().get_val() + aux2 ->get_data().get_val();
+    sll_node_t<pair_double_t>* nodo = new sll_node_t<pair_double_t>(pair_double_t(sum ,aux1 ->get_data().get_inx()));
+    sllpolsum.push_front(nodo);
+    aux1 = aux1->get_next();
+    aux2 = aux2->get_next();
+  }
+  else if(aux1-> get_data().get_inx() > aux2->get_data().get_inx()) {
+    int sum = aux1->get_data().get_val();
+    sll_node_t<pair_double_t>* nodo = new sll_node_t<pair_double_t>(pair_double_t(sum ,aux1 ->get_data().get_inx()));
+    sllpolsum.push_front(nodo);
+    aux1 = aux1->get_next();
+    
+  }
+  else if(aux1-> get_data().get_inx() < aux2->get_data().get_inx()) {
+    int sum = aux2->get_data().get_val();
+    sll_node_t<pair_double_t>* nodo = new sll_node_t<pair_double_t>(pair_double_t(sum ,aux2 ->get_data().get_inx()));
+    sllpolsum.push_front(nodo);
+    aux2 = aux2->get_next();
+  }
+  while(aux1 != NULL || aux2 != NULL){
+    if(aux1-> get_data().get_inx() = aux2->get_data().get_inx()) {
+      int sum = aux1->get_data().get_val() + aux2 ->get_data().get_val();
+      sll_node_t<pair_double_t>* nodo1 = new sll_node_t<pair_double_t>(pair_double_t(sum ,aux1 ->get_data().get_inx()));
+      sllpolsum.insert_after(nodo, nodo1)
+      aux1 = aux1->get_next();
+      aux2 = aux2->get_next();
+    }
+    else if(aux1-> get_data().get_inx() > aux2->get_data().get_inx()) {
+      int sum = aux1->get_data().get_val();
+      sll_node_t<pair_double_t>* nodo1 = new sll_node_t<pair_double_t>(pair_double_t(sum ,aux1 ->get_data().get_inx()));
+      sllpolsum.insert_after(nodo, nodo1);
+      aux1 = aux1->get_next();
+    }
+    else if(aux1-> get_data().get_inx() < aux2->get_data().get_inx()) {
+      int sum = aux2->get_data().get_val();
+      sll_node_t<pair_double_t>* nodo2 = new sll_node_t<pair_double_t>(pair_double_t(sum ,aux2 ->get_data().get_inx()));
+      sllpolsum.insert_after(nodo, nodo2);
+      aux2 = aux2->get_next();
 
+    }
+  }
 }
 
 
