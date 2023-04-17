@@ -31,6 +31,7 @@ int main()
   cout << "sllp3= " << sllp3;
   cout << endl;
 
+
   // Fase III
   double x1, x2, x3;
   cin >> x1 >> x2 >> x3;
@@ -72,5 +73,9 @@ int main()
   sllp2.Sum(sllp3, sllpsum23);
   cout << "sllp2 + sllp3= " << sllpsum23;
 
+
+  std::cout << "Resultado de la suma de los pares " << std::endl;
+  std::cout << sllp1.Sumpol() << std::endl;
+  std::cout << sllp3.Sumpol() << std::endl;
   return 0;
 }
