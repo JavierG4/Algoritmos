@@ -1,11 +1,12 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR:Javier González Brito  
+// FECHA: 17/04/2023
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 2.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // TEMA: 4
 // ESTILO: Google C++ Style Guide
 // COMENTARIOS: 
+
 
 #ifndef DLLT_H_
 #define DLLT_H_
@@ -72,7 +73,7 @@ template <class T> bool dll_t<T>::empty(void) const {
 }
 
 // operaciones
-template <class T> void dll_t<T>::push_front(dll_node_t<T>* nodo) {
+template <class T> void dll_t<T>::push_front(dll_node_t<T>* nodo) { // Introduces por delante del head
   assert(nodo != NULL);
 
   if (empty()) {
@@ -86,7 +87,7 @@ template <class T> void dll_t<T>::push_front(dll_node_t<T>* nodo) {
   sz_++;
 }
 
-template <class T> void dll_t<T>::push_back(dll_node_t<T>* nodo) {
+template <class T> void dll_t<T>::push_back(dll_node_t<T>* nodo) { // Introduces por la cola
   assert(nodo != NULL);
 
   if (empty()) {

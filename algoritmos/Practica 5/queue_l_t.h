@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR:Javier González Brito  
+// FECHA: 17/04/2023
+// EMAIL: alu0101548197@ull.edu.es
 // VERSION: 2.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 5
@@ -81,8 +81,7 @@ template<class T> std::ostream& queue_l_t<T>::write(std::ostream& os) const {
   return os;
 }
 
-template<class T> std::ostream& operator<<(std::ostream& os,
-					   const queue_l_t<T>& q) {
+template<class T> std::ostream& operator<<(std::ostream& os, const queue_l_t<T>& q) {
   q.write(os);
   return os;
 }
