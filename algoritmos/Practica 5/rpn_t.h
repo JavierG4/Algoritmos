@@ -45,35 +45,73 @@ template<class T> const int rpn_t<T>::evaluate(queue_l_t<char>& q) {
 
     if (isdigit(c)) {
       int i = c - '0';
-      // poner código
+      stack_.push(i);
       std::cout << " (es un dígito) " << std::endl
 		<< "   Lo metemos en la pila..." << std::endl;
     } else {
       std::cout << " (es un operador)" << std::endl;
-      // poner código
+      operate_(c);
     }
   }
-  // poner código
+  return stack_.top();
 }
 
 template<class T> void rpn_t<T>::operate_(const char c) {
-  assert(c == '+' || c == '-' || c == '*' || c == '/');
-
-  // poner código
-  std::cout << "   Sacamos de la pila un operando: " << std::endl;
-  
-  // poner código
-  std::cout << "   Sacamos de la pila otro operando: " << std::endl;
-  
-  switch (c) {
-    case '+':
-      // poner código
-      break;
-    // poner código resto de operadores
+  assert(c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == 'r'|| c == 'c'|| c == 'l');
+  if(c == 'r'|| c == 'c'|| c == 'l'){
+    int aux = stack_.top();
+    stack_.pop();
+    std::cout << "   Sacamos de la pila un operando: " << aux << std::endl;
+    int aux2;
+    switch (c) {
+      case 'r':
+        aux2 = sqrt(aux);
+        stack_.push(aux2);
+       break;
+      case 'c':
+        aux2 = pow(aux,2);
+        stack_.push(aux2);
+        break;
+      case 'l':
+        aux2 = log2(aux);
+        stack_.push(aux2);
+        break;
+    }
+    std::cout << "   Metemos en la pila el resultado: " << aux2 << std::endl;
   }
-
-  // poner código
-  std::cout << "   Metemos en la pila el resultado: " << std::endl;
+  else{
+    int aux = stack_.top();
+    stack_.pop();
+    std::cout << "   Sacamos de la pila un operando: " <<  aux << std::endl;
+    int aux2 = stack_.top();
+    stack_.pop();
+    std::cout << "   Sacamos de la pila otro operando: " << aux2 << std::endl;
+    int aux3;
+    switch (c) {
+      case '+':
+        aux3 = aux + aux2;
+        stack_.push(aux3);
+       break;
+      case '-':
+        aux3 = aux2 - aux;
+        stack_.push(aux3);
+        break;
+      case '*':
+        aux3 = aux2 * aux;
+        stack_.push(aux3);
+        break;
+      case '/':
+        aux3 = aux2 / aux;
+        stack_.push(aux3);
+        break;
+      case '^':
+        aux3 = pow(aux2, aux);
+        stack_.push(aux3);
+        break;
+    
+    }
+    std::cout << "   Metemos en la pila el resultado: " << aux3 <<std::endl;
+  }
 }
 
  
