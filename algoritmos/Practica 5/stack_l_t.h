@@ -30,12 +30,12 @@ template<class T> class stack_l_t {
   void pop(void);
   const T& top(void) const;
   bool empty(void) const;
-
   // E/S	
   std::ostream& write(std::ostream& os = std::cout) const;
 
 private:
   dll_t<T> l_;
+  int count_odd_(void) const;
 };
 
 
@@ -44,6 +44,9 @@ template<class T> void stack_l_t<T>::push(const T& dato) {
   dll_node_t<T>* nodo = new dll_node_t<T>(dato);
   assert(nodo != NULL);
   l_.push_front(nodo);
+  std::cout << "\n";
+  std::cout << "El numero de impares en la pila es " << count_odd_() << std::endl;
+  std::cout << "\n";
 }
 
 template<class T> void stack_l_t<T>::pop(void) {
@@ -59,7 +62,17 @@ template<class T> const T& stack_l_t<T>::top(void) const {
 template<class T> bool stack_l_t<T>::empty(void) const {
   return l_.empty();
 }
-
+template<class T> int stack_l_t<T>::count_odd_(void) const {
+  dll_node_t<T>* aux = l_.get_head();
+  int contador = 0;
+  while(aux != NULL) {
+    if(aux -> get_data() % 2 != 0) {
+      contador++;
+    }
+    aux = aux->get_next();
+  }
+  return contador;
+}
 // E/S
 template<class T> std::ostream& stack_l_t<T>::write(std::ostream& os) const {
   dll_node_t<T>* aux = l_.get_head();

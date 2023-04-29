@@ -41,13 +41,14 @@ template<class T> const int rpn_t<T>::evaluate(queue_l_t<char>& q) {
     char c = q.front();
     
     q.pop();
-    std::cout << "Sacamos de la cola un carácter: " << c;
+    std::cout << "Sacamos de la cola un carácter: " << c << std::endl;
 
     if (isdigit(c)) {
       int i = c - '0';
-      stack_.push(i);
+      //stack_.push(i);
       std::cout << " (es un dígito) " << std::endl
 		<< "   Lo metemos en la pila..." << std::endl;
+      stack_.push(i);
     } else {
       std::cout << " (es un operador)" << std::endl;
       operate_(c);
